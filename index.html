@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz për Gjuhën Shqipe</title>
+    <style>
+        /* Përdorim një background të qartë me imazh dhe kontrast të lartë */
+        body {
+         margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-image: url('https://source.unsplash.com/1600x900/?education');
+        background-size: cover;
+        background-position: center;
+         min-height: 100vh;
+        color: white;
+           }
+
+ 
+        .quiz-container {
+            width: 90%;
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.6); /* Background i errët për të pasur kontrast më të mirë */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin: 40px auto;
+        }
+
+        h1 {
+            color: #ffcc00; /* Ngjyrë e artë për titullin */
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Comic Sans MS', sans-serif;
+        }
+
+        .question {
+            margin: 20px 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            border-bottom: 2px solid #ffcc00; /* Vija ndarëse mes pyetjeve */
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;  /* Hapësirë midis opsioneve */
+            flex-wrap: nowrap;
+            margin-top: 10px;
+        }
+
+        label {
+            padding: 12px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            width: 180px;
+            text-align: center;
+        }
+
+        label:hover {
+            transform: scale(1.05);
+            background-color: #2980b9;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .result {
+            font-size: 1.3rem;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .correct {
+            background-color: #2ecc71; /* Ngjyrë e gjelbër për përgjigje të sakta */
+            color: white;
+        }
+
+        .incorrect {
+            background-color: #e74c3c; /* Ngjyrë e kuqe për përgjigje të gabuara */
+            color: white;
+        }
+
+        .button {
+            padding: 15px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Quiz për Gjuhën Shqipe</h1>
+        <div id="quiz">
+            <!-- Pyetja 1 -->
+            <div class="question">
+                <p>1. Cila është forma e duhur e foljes?</p>
+                <div class="options-container">
+                    <label>
+                        <input type="radio" name="q1" value="a" onclick="checkAnswer(this, 'q1', 'a')">
+                        Kam shkuar
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b" onclick="checkAnswer(this, 'q1', 'a')">
+                        Jam shkuar
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c" onclick="checkAnswer(this, 'q1', 'a')">
+                        Kam shkoj
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="d" onclick="checkAnswer(this, 'q1', 'a')">
+                        Shkova
+                    </label>
+                </div>
+                <span id="result-q1" class="result"></span>
+            </div>
+
+            <!-- Pyetja 2 -->
+            <div class="question">
+                <p>2. Përzgjedhni fjalën që është përshkrues :</p>
+                <div class="options-container">
+                    <label>
+                        <input type="radio" name="q2" value="a" onclick="checkAnswer(this, 'q2', 'c')">
+                        Shkolla
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b" onclick="checkAnswer(this, 'q2', 'c')">
+                        Gëzimi
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c" onclick="checkAnswer(this, 'q2', 'c')">
+                        I bukur
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="d" onclick="checkAnswer(this, 'q2', 'c')">
+                        Kalo
+                    </label>
+                </div>
+                <span id="result-q2" class="result"></span>
+            </div>
+
+            <!-- Pyetja 3 -->
+            <div class="question">
+                <p>3. Cila është pjesa e ligjëratës që ka formën e një përkufizimi?</p>
+                <div class="options-container">
+                    <label>
+                        <input type="radio" name="q3" value="a" onclick="checkAnswer(this, 'q3', 'c')">
+                        Fjalor
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b" onclick="checkAnswer(this, 'q3', 'c')">
+                        Adverb
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c" onclick="checkAnswer(this, 'q3', 'c')">
+                        Emër
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="d" onclick="checkAnswer(this, 'q3', 'c')">
+                        Numër
+                    </label>
+                </div>
+                <span id="result-q3" class="result"></span>
+            </div>
+            
+                 <!-- Pyetja 4 -->
+            <div class="question">
+                <p>4. Cilat jane dialektet e gjuhes shqipe?</p>
+                <div class="options-container">
+                    <label>
+                        <input type="radio" name="q4" value="a" onclick="checkAnswer(this, 'q4', 'b')">
+                        Gjuha standarde dhe gege
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b" onclick="checkAnswer(this, 'q4', 'b')">
+                        Gege dhe toske
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c" onclick="checkAnswer(this, 'q4', 'b')">
+                        Kosovare dhe Shkodrane
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="d" onclick="checkAnswer(this, 'q4', 'b')">
+                        Tiranse dhe Ulqinake
+                    </label>
+                </div>
+                <span id="result-q4" class="result"></span>
+            </div>
+
+             <!-- Pyetja 5 -->
+             <div class="question">
+                <p>5. Qka eshte fonetika ?</p>
+                <div class="options-container">
+                    <label>
+                        <input type="radio" name="q5" value="a" onclick="checkAnswer(this, 'q5', 'a')">
+                        Shkenca qe studion tingujt e te folurit
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="b" onclick="checkAnswer(this, 'q5', 'a')">
+                        Studion kuptimin e fjsleve ne nje tekst 
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="c" onclick="checkAnswer(this, 'q5', 'a')">
+                        Merret me rregullat e dretjshkrimit te gjuhes 
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="d" onclick="checkAnswer(this, 'q5', 'a')">
+                        Analizon historine e nje gjuhe
+                    </label>
+                </div>
+                <span id="result-q5" class="result"></span>
+            </div>
+
+         <!-- Pyetja 6 -->
+         <div class="question">
+            <p>6. Si bene fjala "liber" ne trajten e pashquar, rasa rrjedhore</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q6" value="a" onclick="checkAnswer(this, 'q6', 'c')">
+                    Prej nje libri
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="b" onclick="checkAnswer(this, 'q6', 'c')">
+                    Nje liber
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="c" onclick="checkAnswer(this, 'q6', 'c')">
+                    Prej librit
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="d" onclick="checkAnswer(this, 'q6', 'c')">
+                    Librin
+                </label>
+            </div>
+            <span id="result-q6" class="result"></span>
+        </div>
+
+         <!-- Pyetja 7 -->
+         <div class="question">
+            <p>7. Si bene ne gjuhen standarde fjala 'krye' </p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q7" value="a" onclick="checkAnswer(this, 'q7', 'c')">
+                    Kryja
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="b" onclick="checkAnswer(this, 'q7', 'c')">
+                    Kryet
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="c" onclick="checkAnswer(this, 'q7', 'c')">
+                    Koka
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="d" onclick="checkAnswer(this, 'q7', 'c')">
+                    Krye
+                </label>
+            </div>
+            <span id="result-q7" class="result"></span>
+        </div>
+
+
+         <!-- Pyetja 8 -->
+         <div class="question">
+            <p>8. Qka eshte fonologjia?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q8" value="a" onclick="checkAnswer(this, 'q8', 'd')">
+                    Analizon historine e nje gjuhe
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="b" onclick="checkAnswer(this, 'q8', 'd')">
+                    Analizon kuptimin e fjaleve
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="c" onclick="checkAnswer(this, 'q8', 'd')">
+                    Studion drejteshkrimin e fjaleve
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="d" onclick="checkAnswer(this, 'q8', 'd')">
+                    Shkenca e cila studion tingujt e gjuhes si nje sistem
+                </label>
+            </div>
+            <span id="result-q8" class="result"></span>
+        </div>
+
+         <!-- Pyetja 9 -->
+         <div class="question">
+            <p>9. Cilat jane rasat e gjuhes shqipe?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q9" value="a" onclick="checkAnswer(this, 'q9', 'c')">
+                    Emerore, Gjinore, Dhanore, Kallezore, Siperore
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="b" onclick="checkAnswer(this, 'q9', 'c')">
+                    Emerore, Gjinore, Dhanore, Kallezues, Rrjedhore
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="c" onclick="checkAnswer(this, 'q9', 'c')">
+                    Emerore, Gjinore, Dhanore, Kallezore, Rrjedhore
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="d" onclick="checkAnswer(this, 'q9', 'c')">
+                    Emerore, Gjinore, Deftore, Kallezore, Rrjedhore
+                </label>
+            </div>
+            <span id="result-q9" class="result"></span>
+        </div>
+
+         <!-- Pyetja 10 -->
+         <div class="question">
+            <p>10. Tri shkallet e mbiemrit jane:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q10" value="a" onclick="checkAnswer(this, 'q10', 'a')">
+                    Siperore, Krahasore, Pohore
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="b" onclick="checkAnswer(this, 'q10', 'a')">
+                    Mohore, Paskajore, Kushtore
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="c" onclick="checkAnswer(this, 'q10', 'a')">
+                    Lidhore, Siperore, Paskajore
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="d" onclick="checkAnswer(this, 'q10', 'a')">
+                    Kushtore, Krahasore, Habitore
+                </label>
+            </div>
+            <span id="result-q10" class="result"></span>
+        </div>
+
+         <!-- Pyetja 11 -->
+         <div class="question">
+            <p>11. Gjymtyret kryesore jane:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q11" value="a" onclick="checkAnswer(this, 'q11', 'b')">
+                    Kallezuesi dhe Krahasori
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="b" onclick="checkAnswer(this, 'q11', 'b')">
+                    Kryefjala dhe Kallezuesi
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="c" onclick="checkAnswer(this, 'q11', 'b')">
+                    Mbiemri dhe ndajfolja
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="d" onclick="checkAnswer(this, 'q11', 'b')">
+                    Lidheza dhe pasthirrma
+                </label>
+            </div>
+            <span id="result-q11" class="result"></span>
+        </div>
+
+         <!-- Pyetja 12 -->
+         <div class="question">
+            <p>12.  Cilat jane llojet  e lidhezave?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q12" value="a" onclick="checkAnswer(this, 'q12', 'c')">
+                    Foljore dhe emerore
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="b" onclick="checkAnswer(this, 'q12', 'c')">
+                    Te shquara dhe te pashquara
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="c" onclick="checkAnswer(this, 'q12', 'c')">
+                    Bashkerenditese dhe nenrenditese
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="d" onclick="checkAnswer(this, 'q12', 'c')">
+                    Emerore dhe te shquara
+                </label>
+            </div>
+            <span id="result-q12" class="result"></span>
+        </div>
+
+         <!-- Pyetja 13 -->
+         <div class="question">
+            <p>13. Gjymtyret e dyta jane:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q13" value="a" onclick="checkAnswer(this, 'q13', 'd')">
+                    Kryefjala dhe kallezuesi
+                </label>
+                <label>
+                    <input type="radio" name="q13" value="b" onclick="checkAnswer(this, 'q13', 'd')">
+                    Lidheza dhe pasthrima
+                </label>
+                <label>
+                    <input type="radio" name="q13" value="c" onclick="checkAnswer(this, 'q13', 'd')">
+                    Rrethanori dhe numerori
+                </label>
+                <label>
+                    <input type="radio" name="q13" value="d" onclick="checkAnswer(this, 'q13', 'd')">
+                    Kundrinori dhe rrethanori
+                </label>
+            </div>
+            <span id="result-q13" class="result"></span>
+        </div>
+
+         <!-- Pyetja 14 -->
+         <div class="question">
+            <p>14. Lidhezat bashkrenditese jane:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q14" value="a" onclick="checkAnswer(this, 'q14', 'a')">
+                    as, edhe, dhe, e, a 
+                </label>
+                <label>
+                    <input type="radio" name="q14" value="b" onclick="checkAnswer(this, 'q14', 'a')">
+                    se, qe, nese, ku, nga
+                </label>
+                <label>
+                    <input type="radio" name="q14" value="c" onclick="checkAnswer(this, 'q14', 'a')">
+                    meqe, kur, derisa
+                </label>
+                <label>
+                    <input type="radio" name="q14" value="d" onclick="checkAnswer(this, 'q14', 'a')">
+                    qe te, sikur te, megjithese
+                </label>
+            </div>
+            <span id="result-q14" class="result"></span>
+        </div>
+
+         <!-- Pyetja 15 -->
+         <div class="question">
+            <p>15. Lidhezat nenrenditese jane:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q15" value="a" onclick="checkAnswer(this, 'q15', 'c')">
+                    qe te, sikur te, derisa
+                </label>
+                <label>
+                    <input type="radio" name="q15" value="b" onclick="checkAnswer(this, 'q15', 'c')">
+                    meqe, kur, derisa
+                </label>
+                <label>
+                    <input type="radio" name="q15" value="c" onclick="checkAnswer(this, 'q15', 'c')">
+                    se, qe, nese, nga
+                </label>
+                <label>
+                    <input type="radio" name="q15" value="d" onclick="checkAnswer(this, 'q15', 'c')">
+                    as, edhe, dhe, e
+                </label>
+            </div>
+            <span id="result-q15" class="result"></span>
+        </div>
+
+         <!-- Pyetja 16 -->
+         <div class="question">
+            <p>16. Gjeje rrethanorin: 'Une vij ne shtepi shpejt'</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q16" value="a" onclick="checkAnswer(this, 'q16', 'c')">
+                    Une
+                </label>
+                <label>
+                    <input type="radio" name="q16" value="b" onclick="checkAnswer(this, 'q16', 'c')">
+                    vij
+                </label>
+                <label>
+                    <input type="radio" name="q16" value="c" onclick="checkAnswer(this, 'q16', 'c')">
+                    ne shtepi
+                </label>
+                <label>
+                    <input type="radio" name="q16" value="c" onclick="checkAnswer(this, 'q16', 'c')">
+                    shpejt
+                </label>
+            </div>
+            <span id="result-q16" class="result"></span>
+        </div>
+
+         <!-- Pyetja 17 -->
+         <div class="question">
+            <p>17. Dokumentet e para te gjuhes shqipe jane:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q17" value="a" onclick="checkAnswer(this, 'q17', 'a')">
+                    Formula e Pagezimit, Fjalorthi i Arnold von Harfit
+                </label>
+                <label>
+                    <input type="radio" name="q17" value="b" onclick="checkAnswer(this, 'q17', 'a')">
+                    Pakti i Babilonise
+                </label>
+                <label>
+                    <input type="radio" name="q17" value="c" onclick="checkAnswer(this, 'q17', 'a')">
+                    Deklarata e Pvarsise 
+                </label>
+                <label>
+                    <input type="radio" name="q17" value="d" onclick="checkAnswer(this, 'q17', 'a')">
+                    Kontrata e Egjiptit te Vjeter
+                </label>
+            </div>
+            <span id="result-q17" class="result"></span>
+        </div>
+
+         <!-- Pyetja 18 -->
+         <div class="question">
+            <p>18. Fjalet e qiririt eshte vepra e njohur e:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q18" value="a" onclick="checkAnswer(this, 'q18', 'a')">
+                    Millosh Nikolla (Migjeni)
+                </label>
+                <label>
+                    <input type="radio" name="q18" value="b" onclick="checkAnswer(this, 'q18', 'a')">
+                    Ismail Kadare
+                </label>
+                <label>
+                    <input type="radio" name="q18" value="c" onclick="checkAnswer(this, 'q18', 'a')">
+                    Naim Frasheri
+                </label>
+                <label>
+                    <input type="radio" name="q18" value="d" onclick="checkAnswer(this, 'q18', 'a')">
+                    Mitrush Kuteli
+                </label>
+            </div>
+            <span id="result-q18" class="result"></span>
+        </div>
+
+         <!-- Pyetja 19 -->
+         <div class="question">
+            <p>19. Ne cilen fjali ka fole gjysmendihese:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q19" value="a" onclick="checkAnswer(this, 'q19', 'c')">
+                    Nje dite e ngrohte pranvere
+                </label>
+                <label>
+                    <input type="radio" name="q19" value="b" onclick="checkAnswer(this, 'q19', 'c')">
+                    Nje nate e qete dimri
+                </label>
+                <label>
+                    <input type="radio" name="q19" value="c" onclick="checkAnswer(this, 'q19', 'c')">
+                    Tezja ime eshte mesuese
+                </label>
+                <label>
+                    <input type="radio" name="q19" value="d" onclick="checkAnswer(this, 'q19', 'c')">
+                    NJe mengjes i bukur vere
+                </label>
+            </div>
+            <span id="result-q19" class="result"></span>
+        </div>
+
+         <!-- Pyetja 20 -->
+         <div class="question">
+            <p>20. Cilat jane format e pashtjelluara?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q20" value="a" onclick="checkAnswer(this, 'q20', 'a')">
+                    Pjesore, mohore, percjellorja
+                </label>
+                <label>
+                    <input type="radio" name="q20" value="b" onclick="checkAnswer(this, 'q20', 'a')">
+                    Deftore, habitore, lidhore
+                </label>
+                <label>
+                    <input type="radio" name="q20" value="c" onclick="checkAnswer(this, 'q20', 'a')">
+                    Kushtore, deshirore, urdherore
+                </label>
+                <label>
+                    <input type="radio" name="q20" value="d" onclick="checkAnswer(this, 'q20', 'a')">
+                    Pjesore, kushtore, paskajore
+                </label>
+            </div>
+            <span id="result-q20" class="result"></span>
+        </div>
+
+         <!-- Pyetja 21 -->
+         <div class="question">
+            <p>21. Qka tregon regjistri informal (i shkujdesur)?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q21" value="a" onclick="checkAnswer(this, 'q21', 'c')">
+                    Shfaqet di ne formen e shkruar dhe ka qellim ndikimin ndaj audiences.
+                </label>
+                <label>
+                    <input type="radio" name="q21" value="b" onclick="checkAnswer(this, 'q21', 'c')">
+                    Regjister i larte kur folesi eshte shume i kujdesur 
+                </label>
+                <label>
+                    <input type="radio" name="q21" value="c" onclick="checkAnswer(this, 'q21', 'c')">
+                    Perdoren fjale dhe shprehje joformale me fjale zhargoni 
+                </label>
+                <label>
+                    <input type="radio" name="q21" value="d" onclick="checkAnswer(this, 'q21', 'c')">
+                    perdoret ne komunikim me njerez te afert qe nuk jane zyrtare
+                </label>
+            </div>
+            <span id="result-q21" class="result"></span>
+        </div>
+
+         <!-- Pyetja 22 -->
+         <div class="question">
+            <p>22. Cila fjali eshte ne ligjeraten e zhdrejte?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q22" value="a" onclick="checkAnswer(this, 'q22', 'a')">
+                    Ai tha se ishte lodhur
+                </label>
+                <label>
+                    <input type="radio" name="q22" value="b" onclick="checkAnswer(this, 'q22', 'a')">
+                    Ajo pyeti "Kur vjen?"
+                </label>
+                <label>
+                    <input type="radio" name="q22" value="c" onclick="checkAnswer(this, 'q22', 'a')">
+                    Mami tha: "Dreka eshte gati"
+                </label>
+                <label>
+                    <input type="radio" name="q22" value="d" onclick="checkAnswer(this, 'q22', 'a')">
+                    Ai tha: Jam lodhur
+                </label>
+            </div>
+            <span id="result-q22" class="result"></span>
+        </div>
+
+         <!-- Pyetja 23 -->
+         <div class="question">
+            <p>23. Kush bene pjese ne klasen e pandryshueshme te fjaleve</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q23" value="a" onclick="checkAnswer(this, 'q23', 'c')">
+                    Emri
+                </label>
+                <label>
+                    <input type="radio" name="q23" value="b" onclick="checkAnswer(this, 'q23', 'c')">
+                    Mbiemri
+                </label>
+                <label>
+                    <input type="radio" name="q23" value="c" onclick="checkAnswer(this, 'q23', 'c')">
+                    Lidhezat
+                </label>
+                <label>
+                    <input type="radio" name="q23" value="d" onclick="checkAnswer(this, 'q23', 'c')">
+                    Numeroret
+                </label>
+            </div>
+            <span id="result-q23" class="result"></span>
+        </div>
+
+         <!-- Pyetja 24 -->
+         <div class="question">
+            <p>24. Qfare strofe eshte kjo : <br> Dielli ndrin mbi mal te larte, <br> Era kendon ne fushe te arte</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q24" value="a" onclick="checkAnswer(this, 'q24', 'a')">
+                    Disku
+                </label>
+                <label>
+                    <input type="radio" name="q24" value="b" onclick="checkAnswer(this, 'q24', 'a')">
+                    Tercina
+                </label>
+                <label>
+                    <input type="radio" name="q24" value="c" onclick="checkAnswer(this, 'q24', 'a')">
+                    Katrena
+                </label>
+                <label>
+                    <input type="radio" name="q24" value="d" onclick="checkAnswer(this, 'q24', 'a')">
+                    Gjashtevargeshi
+                </label>
+            </div>
+            <span id="result-q24" class="result"></span>
+        </div>
+
+         <!-- Pyetja 25 -->
+         <div class="question">
+            <p>25. Rine Katerineza eshte vepra e njohur e :</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q25" value="a" onclick="checkAnswer(this, 'q25', 'a')">
+                    Mitrush Kutelit
+                </label>
+                <label>
+                    <input type="radio" name="q25" value="b" onclick="checkAnswer(this, 'q25', 'a')">
+                    Naim Frasherit
+                </label>
+                <label>
+                    <input type="radio" name="q25" value="c" onclick="checkAnswer(this, 'q25', 'a')">
+                    Ismail Kadare
+                </label>
+                <label>
+                    <input type="radio" name="q25" value="d" onclick="checkAnswer(this, 'q25', 'a')">
+                    Migjeni
+                </label>
+            </div>
+            <span id="result-q25" class="result"></span>
+        </div>
+
+         <!-- Pyetja 26 -->
+         <div class="question">
+            <p>26. Qfare ndryshimi eshte ky: mik-miq, zog-zogj</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q26" value="a" onclick="checkAnswer(this, 'q26', 'c')">
+                    Proteza
+                </label>
+                <label>
+                    <input type="radio" name="q26" value="b" onclick="checkAnswer(this, 'q26', 'c')">
+                    Metateza
+                </label>
+                <label>
+                    <input type="radio" name="q26" value="c" onclick="checkAnswer(this, 'q26', 'c')">
+                    Patalizimi
+                </label>
+                <label>
+                    <input type="radio" name="q26" value="d" onclick="checkAnswer(this, 'q26', 'c')">
+                    Apofonia
+                </label>
+            </div>
+            <span id="result-q26" class="result"></span>
+        </div>
+
+         <!-- Pyetja 27 -->
+         <div class="question">
+            <p>27. Si bene foja laj ne menyren deftore, kohen e ardhme te perparme ne veten e dyte shumes:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q27" value="a" onclick="checkAnswer(this, 'q27', 'd')">
+                    Te keni lare
+                </label>
+                <label>
+                    <input type="radio" name="q27" value="b" onclick="checkAnswer(this, '27', 'd')">
+                    Do te lani
+                </label>
+                <label>
+                    <input type="radio" name="q27" value="c" onclick="checkAnswer(this, 'q27', 'd')">
+                    Pata lare
+                </label>
+                <label>
+                    <input type="radio" name="q27" value="d" onclick="checkAnswer(this, 'q27', 'd')">
+                    Do te keni lare
+                </label>
+            </div>
+            <span id="result-q27" class="result"></span>
+        </div>
+
+         <!-- Pyetja 28 -->
+         <div class="question">
+            <p>28. Qka jane foljet jokalimtare?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q28" value="a" onclick="checkAnswer(this, 'q28', 'b')">
+                    Foljet te cilat nuk marrin kallezues
+                </label>
+                <label>
+                    <input type="radio" name="q28" value="b" onclick="checkAnswer(this, 'q28', 'b')">
+                    Fojet te cilat nuk marrin kundrinor te drejte
+                </label>
+                <label>
+                    <input type="radio" name="q28" value="c" onclick="checkAnswer(this, 'q28', 'b')">
+                    Fojlet qe marrin kallezues
+                </label>
+                <label>
+                    <input type="radio" name="q28" value="d" onclick="checkAnswer(this, 'q28', 'b')">
+                    Fojet qe marrin kundrinor te drejte
+                </label>
+            </div>
+            <span id="result-q28" class="result"></span>
+        </div>
+
+         <!-- Pyetja 28 -->
+         <div class="question">
+            <p>28. Cila eshte fjalia njekryegjymtyreshe </p>
+            <div class="options-container">
+                <label>
+                   <input type="radio" name="q28" value="a" onclick="checkAnswer(this, 'q28', 'd')">
+                    Dielli ndriqon fuqishem
+                </label>
+                <label>
+                    <input type="radio" name="q28" value="b" onclick="checkAnswer(this, 'q28', 'd')">
+                    Femijet luajne ne park
+                </label>
+                <label>
+                    <input type="radio" name="q28" value="c" onclick="checkAnswer(this, 'q28', 'd')">
+                    Mesuesja shpjegon mesimin
+                </label>
+                <label>
+                    <input type="radio" name="q28" value="d" onclick="checkAnswer(this, 'q28', 'd')">
+                    Po bie shi
+                </label>
+            </div>
+            <span id="result-q28" class="result"></span>
+        </div>
+
+         <!-- Pyetja 29 -->
+         <div class="question">
+            <p>29. Si ndahen ndajshtesat?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q29" value="a" onclick="checkAnswer(this, 'q29', 'a')">
+                    Parashtesa, prapashtesa, mbaresa
+                </label>
+                <label>
+                    <input type="radio" name="q29" value="b" onclick="checkAnswer(this, 'q29', 'a')">
+                    Te squara, te pashquara
+                </label>
+                <label>
+                    <input type="radio" name="q29" value="c" onclick="checkAnswer(this, 'q29', 'a')">
+                    Mohore, pohore
+                </label>
+                <label>
+                    <input type="radio" name="q29" value="d" onclick="checkAnswer(this, 'q29', 'a')">
+                    Mbaresa, pasthirrma
+                </label>
+            </div>
+            <span id="result-q29" class="result"></span>
+        </div>
+
+         <!-- Pyetja 30 -->
+         <div class="question">
+            <p>30. Cila eshte njera nga dialektet e gjuhes shqipe?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q30" value="a" onclick="checkAnswer(this, 'q30', 'a')">
+                    Toskerishtja jugore
+                </label>
+                <label>
+                    <input type="radio" name="q30" value="b" onclick="checkAnswer(this, 'q30', 'a')">
+                    Toskerishtja
+                </label>
+                <label>
+                    <input type="radio" name="q30" value="c" onclick="checkAnswer(this, 'q30', 'a')">
+                    Gegerishtja
+                </label>
+                <label>
+                    <input type="radio" name="q30" value="d" onclick="checkAnswer(this, 'q30', 'a')">
+                    Gjuha standarde
+                </label>
+            </div>
+            <span id="result-q30" class="result"></span>
+        </div>
+
+         <!-- Pyetja 31 -->
+         <div class="question">
+            <p>31. Kur eshte botuar Meshari i Gjon Buzukut:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q31" value="a" onclick="checkAnswer(this, 'q31', 'a')">
+                    1555
+                </label>
+                <label>
+                    <input type="radio" name="q31" value="b" onclick="checkAnswer(this, 'q31', 'a')">
+                    1744
+                </label>
+                <label>
+                    <input type="radio" name="q31" value="c" onclick="checkAnswer(this, 'q31', 'a')">
+                    1635
+                </label>
+                <label>
+                    <input type="radio" name="q31" value="d" onclick="checkAnswer(this, 'q31', 'a')">
+                    1685
+                </label>
+            </div>
+            <span id="result-q31" class="result"></span>
+        </div>
+
+         <!-- Pyetja 32 -->
+         <div class="question">
+            <p>32. Kongresi i Manastirit eshte bere per arsye:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q32" value="a" onclick="checkAnswer(this, 'q32', 'b')">
+                    Perhapja e arsimit ne gjuhen shqipe
+                </label>
+                <label>
+                    <input type="radio" name="q32" value="b" onclick="checkAnswer(this, 'q32', 'b')">
+                    Krijimi i nje alfabeti te unifikuar
+                </label>
+                <label>
+                    <input type="radio" name="q32" value="c" onclick="checkAnswer(this, 'q32', 'b')">
+                    Te krijonte rregulla per drejtshkrim
+                </label>
+                <label>
+                    <input type="radio" name="q32" value="d" onclick="checkAnswer(this, 'q32', 'b')">
+                    Te vendoset vetem nje dialekt
+                </label>
+            </div>
+            <span id="result-q32" class="result"></span>
+        </div>
+
+         <!-- Pyetja 33 -->
+         <div class="question">
+            <p>33. Kur u mbajte kongresi i Elbasanit</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q33" value="a" onclick="checkAnswer(this, 'q33', 'a')">
+                    1909
+                </label>
+                <label>
+                    <input type="radio" name="q33" value="b" onclick="checkAnswer(this, 'q33', 'a')">
+                    1908
+                </label>
+                <label>
+                    <input type="radio" name="q33" value="c" onclick="checkAnswer(this, 'q33', 'a')">
+                    1972
+                </label>
+                <label>
+                    <input type="radio" name="q33" value="d" onclick="checkAnswer(this, 'q33', 'a')">
+                    1999
+                </label>
+            </div>
+            <span id="result-q33" class="result"></span>
+        </div>
+
+         <!-- Pyetja 34 -->
+         <div class="question">
+            <p>34. Bregu i Molles eshte veper e:</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q34" value="a" onclick="checkAnswer(this, 'q34', 'c')">
+                     Anton Pashkut
+                </label>
+                <label>
+                    <input type="radio" name="q34" value="b" onclick="checkAnswer(this, 'q34', 'c')">
+                    Ernest Koliqit
+                </label>
+                <label>
+                    <input type="radio" name="q34" value="c" onclick="checkAnswer(this, 'q34', 'c')">
+                    Azem Shkreli
+                </label>
+                <label>
+                    <input type="radio" name="q34" value="d" onclick="checkAnswer(this, 'q34', 'c')">
+                    Dritero Agolli
+                </label>
+            </div>
+            <span id="result-q34" class="result"></span>
+        </div>
+
+         <!-- Pyetja 35 -->
+         <div class="question">
+            <p>35. Cili eshte funksioni i peremrit vetor ne fjali?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q35" value="a" onclick="checkAnswer(this, 'q35', 'c')">
+                    Tregon kohen e veprimit
+                </label>
+                <label>
+                    <input type="radio" name="q35" value="b" onclick="checkAnswer(this, 'q35', 'c')">
+                    Tregon nje vendndodhje
+                </label>
+                <label>
+                    <input type="radio" name="q35" value="c" onclick="checkAnswer(this, 'q35', 'c')">
+                    Zevendeson nje emer
+                </label>
+                <label>
+                    <input type="radio" name="q35" value="d" onclick="checkAnswer(this, 'q35', 'c')">
+                    Pershkruan menyren e veprimit
+                </label>
+            </div>
+            <span id="result-q35" class="result"></span>
+        </div>
+
+
+         <!-- Pyetja 36 -->
+         <div class="question">
+            <p>36. Cila fjali permbane nje kundrinore te drejte</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q36" value="a" onclick="checkAnswer(this, 'q36', 'b')">
+                    Ai flete me kujdes
+                </label>
+                <label>
+                    <input type="radio" name="q36" value="b" onclick="checkAnswer(this, 'q36', 'b')">
+                    Ajo lexon nje liber
+                </label>
+                <label>
+                    <input type="radio" name="q36" value="c" onclick="checkAnswer(this, 'q36', 'b')">
+                    Ne shetitem ne park
+                </label>
+                <label>
+                    <input type="radio" name="q36" value="d" onclick="checkAnswer(this, 'q36', 'b')">
+                    Ata u kthyen shpejt
+                </label>
+            </div>
+            <span id="result-q36" class="result"></span>
+        </div>
+
+         <!-- Pyetja 37 -->
+         <div class="question">
+            <p>37. Cili eshte numri i shumefishte i emrit "fjale"</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q37" value="a" onclick="checkAnswer(this, 'q37', 'c')">
+                    Fjala
+                </label>
+                <label>
+                    <input type="radio" name="q37" value="b" onclick="checkAnswer(this, 'q37', 'c')">
+                    Fjale
+                </label>
+                <label>
+                    <input type="radio" name="q37" value="c" onclick="checkAnswer(this, 'q37', 'c')">
+                    Fjalet
+                </label>
+                <label>
+                    <input type="radio" name="q37" value="d" onclick="checkAnswer(this, 'q37', 'c')">
+                    Fjalash
+                </label>
+            </div>
+            <span id="result-q37" class="result"></span>
+        </div>
+
+         <!-- Pyetja 38 -->
+         <div class="question">
+            <p>38. Cili nga opcionet me poshte permbane nje metafore?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q38" value="a" onclick="checkAnswer(this, 'q38', 'd')">
+                    Pema ishte shume e larte
+                </label>
+                <label>
+                    <input type="radio" name="q38" value="b" onclick="checkAnswer(this, 'q38', 'd')">
+                    Eci ngadale ne rruge
+                </label>
+                <label>
+                    <input type="radio" name="q38" value="c" onclick="checkAnswer(this, 'q38', 'd')">
+                    Shkruajti nje leter te gjate
+                </label>
+                <label>
+                    <input type="radio" name="q38" value="d" onclick="checkAnswer(this, 'q38', 'd')">
+                    Deti vallezonte nen rrezet e diellit
+                </label>
+            </div>
+            <span id="result-q38" class="result"></span>
+        </div>
+
+            <!-- Pyetja 39 -->
+         <div class="question">
+            <p>39. Cila nga fjalet me poshte eshte folje ne menyren deftore, kohea e tashme</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q39" value="a" onclick="checkAnswer(this, 'q39', 'b')">
+                    Shkrova
+                </label>
+                <label>
+                    <input type="radio" name="q39" value="b" onclick="checkAnswer(this, 'q39', 'b')">
+                    Lexoj
+                </label>
+                <label>
+                    <input type="radio" name="q39" value="c" onclick="checkAnswer(this, 'q39', 'b')">
+                    Do shkoj
+                </label>
+                <label>
+                    <input type="radio" name="q39" value="d" onclick="checkAnswer(this, 'q39', 'b')">
+                    Do kaloj
+                </label>
+            </div>
+            <span id="result-q39" class="result"></span>
+        </div>
+
+            <!-- Pyetja 40 -->
+         <div class="question">
+            <p>40. Cila fjali permban nje kallezues emeror?</p>
+            <div class="options-container">
+                <label>
+                    <input type="radio" name="q40" value="a" onclick="checkAnswer(this, 'q40', 'a')">
+                    Mesuesja eshte shume e dashur
+                </label>
+                <label>
+                    <input type="radio" name="q40" value="b" onclick="checkAnswer(this, 'q40', 'a')">
+                    Nxenesit vrapojne ne oborr
+                </label>
+                <label>
+                    <input type="radio" name="q40" value="c" onclick="checkAnswer(this, 'q40', 'a')">
+                    Ai kendon bukur
+                </label>
+                <label>
+                    <input type="radio" name="q40" value="d" onclick="checkAnswer(this, 'q40', 'a')">
+                    Ne lexojme libra te rinj
+                </label>
+            </div>
+            <span id="result-q40" class="result"></span>
+        </div>
+
+    <script>
+        function checkAnswer(element, questionId, correctAnswer) {
+            var resultElement = document.getElementById("result-" + questionId);
+            resultElement.style.opacity = 1; // Bëjmë që rezultati të shfaqet
+
+            // Kontrollojmë nëse përgjigjja është e saktë
+            if (element.value === correctAnswer) {
+                resultElement.textContent = "Përgjigjja është e saktë!";
+                resultElement.className = "result correct";
+            } else {
+                resultElement.textContent = "Përgjigjja është e gabuar!";
+                resultElement.className = "result incorrect";
+            }
+        }
+
+        function showResults() {
+            var results = document.querySelectorAll('.result');
+            results.forEach(function(result) {
+                result.style.opacity = 1; // Shfaqim të gjitha rezultatet
+            });
+        }
+    </script>
+
+</body>
+</html>
