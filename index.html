@@ -10,8 +10,8 @@
          margin: 0;
         padding: 0;
         font-family: 'Arial', sans-serif;
-        background-image: url('https://source.unsplash.com/1600x900/?education');
         background-size: cover;
+        background-color: burlywood;
         background-position: center;
          min-height: 100vh;
         color: white;
@@ -21,16 +21,16 @@
         .quiz-container {
             width: 90%;
             max-width: 800px;
-            background-color: rgba(0, 0, 0, 0.6); /* Background i errët për të pasur kontrast më të mirë */
+            background-color: rgb(1, 1, 39); 
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px black;
             text-align: center;
             margin: 40px auto;
         }
 
         h1 {
-            color: #ffcc00; /* Ngjyrë e artë për titullin */
+            color: #ffcc00; 
             font-size: 2.5rem;
             margin-bottom: 20px;
             font-family: 'Comic Sans MS', sans-serif;
@@ -242,19 +242,19 @@
             <p>6. Si bene fjala "liber" ne trajten e pashquar, rasa rrjedhore</p>
             <div class="options-container">
                 <label>
-                    <input type="radio" name="q6" value="a" onclick="checkAnswer(this, 'q6', 'c')">
+                    <input type="radio" name="q6" value="a" onclick="checkAnswer(this, 'q6', 'a')">
                     Prej nje libri
                 </label>
                 <label>
-                    <input type="radio" name="q6" value="b" onclick="checkAnswer(this, 'q6', 'c')">
+                    <input type="radio" name="q6" value="b" onclick="checkAnswer(this, 'q6', 'a')">
                     Nje liber
                 </label>
                 <label>
-                    <input type="radio" name="q6" value="c" onclick="checkAnswer(this, 'q6', 'c')">
+                    <input type="radio" name="q6" value="c" onclick="checkAnswer(this, 'q6', 'a')">
                     Prej librit
                 </label>
                 <label>
-                    <input type="radio" name="q6" value="d" onclick="checkAnswer(this, 'q6', 'c')">
+                    <input type="radio" name="q6" value="d" onclick="checkAnswer(this, 'q6', 'a')">
                     Librin
                 </label>
             </div>
@@ -744,50 +744,26 @@
 
          <!-- Pyetja 27 -->
          <div class="question">
-            <p>27. Si bene foja laj ne menyren deftore, kohen e ardhme te perparme ne veten e dyte shumes:</p>
+            <p>27. Qka jane foljet jokalimtare?</p>
             <div class="options-container">
                 <label>
-                    <input type="radio" name="q27" value="a" onclick="checkAnswer(this, 'q27', 'd')">
-                    Te keni lare
-                </label>
-                <label>
-                    <input type="radio" name="q27" value="b" onclick="checkAnswer(this, '27', 'd')">
-                    Do te lani
-                </label>
-                <label>
-                    <input type="radio" name="q27" value="c" onclick="checkAnswer(this, 'q27', 'd')">
-                    Pata lare
-                </label>
-                <label>
-                    <input type="radio" name="q27" value="d" onclick="checkAnswer(this, 'q27', 'd')">
-                    Do te keni lare
-                </label>
-            </div>
-            <span id="result-q27" class="result"></span>
-        </div>
-
-         <!-- Pyetja 28 -->
-         <div class="question">
-            <p>28. Qka jane foljet jokalimtare?</p>
-            <div class="options-container">
-                <label>
-                    <input type="radio" name="q28" value="a" onclick="checkAnswer(this, 'q28', 'b')">
+                    <input type="radio" name="q27" value="a" onclick="checkAnswer(this, 'q27', 'b')">
                     Foljet te cilat nuk marrin kallezues
                 </label>
                 <label>
-                    <input type="radio" name="q28" value="b" onclick="checkAnswer(this, 'q28', 'b')">
+                    <input type="radio" name="q27" value="b" onclick="checkAnswer(this, 'q27', 'b')">
                     Fojet te cilat nuk marrin kundrinor te drejte
                 </label>
                 <label>
-                    <input type="radio" name="q28" value="c" onclick="checkAnswer(this, 'q28', 'b')">
+                    <input type="radio" name="q27" value="c" onclick="checkAnswer(this, 'q27', 'b')">
                     Fojlet qe marrin kallezues
                 </label>
                 <label>
-                    <input type="radio" name="q28" value="d" onclick="checkAnswer(this, 'q28', 'b')">
+                    <input type="radio" name="q27" value="d" onclick="checkAnswer(this, 'q27', 'b')">
                     Fojet qe marrin kundrinor te drejte
                 </label>
             </div>
-            <span id="result-q28" class="result"></span>
+            <span id="result-q27" class="result"></span>
         </div>
 
          <!-- Pyetja 28 -->
@@ -1057,7 +1033,7 @@
 
             <!-- Pyetja 39 -->
          <div class="question">
-            <p>39. Cila nga fjalet me poshte eshte folje ne menyren deftore, kohea e tashme</p>
+            <p>39. Cila nga fjalet me poshte eshte folje ne menyren deftore, koha e tashme</p>
             <div class="options-container">
                 <label>
                     <input type="radio" name="q39" value="a" onclick="checkAnswer(this, 'q39', 'b')">
